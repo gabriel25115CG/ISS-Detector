@@ -31,21 +31,12 @@ body, h1, h2, p {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre portée plus grande et plus foncée */
     margin-right: 20px; /* Espace entre les boîtes */
     margin: 25px;
-    border-radius: 10px;
-    border: 1.5px solid red;
-    animation: rainbow 5s linear infinite;
+    border-radius: 20px;
+  
   }
 
-  @keyframes rainbow {
-    0% {border-color: pink;}
-    14% {border-color: purple;}
-    28% {border-color: cyan;}
-    42% {border-color: lime;}
-    57% {border-color: yellow;}
-    71% {border-color: orange;}
-    85% {border-color: red;}
-    100% {border-color: pink;}
-  }
+
+ 
   .feature:hover {
     transform: scale(1.1); /* Ajoutez cette ligne */
   }
