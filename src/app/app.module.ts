@@ -24,7 +24,7 @@ import { FooterComponent } from './footer/footer.component';
     SeparatorComponent,
     LoginComponent,
     RegisterComponent,
-    FooterComponent, // Ajoutez NasaPictureComponent ici
+    FooterComponent,
     
 
    
@@ -39,6 +39,10 @@ import { FooterComponent } from './footer/footer.component';
   bootstrap: [
     AppComponent,
     RegisterComponent,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule
+    
   
   ]
 })

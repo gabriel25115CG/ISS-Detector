@@ -1,16 +1,7 @@
-/* separator.component.css */
-
 .separator {
-    height: 1.5px;
-    width: 100%;
-    background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8a2be2, #ff00ff); /* Dégradé de couleurs arc-en-ciel */
-    background-size: 200% auto;
-    animation: rainbow 2s linear infinite; /* Animation arc-en-ciel */
-    margin: 20px 0; /* Espacement au-dessus et en dessous de la barre */
-  }
-  
-  @keyframes rainbow {
-    0% { background-position: 0 0; }
-    100% { background-position: 200% 0; }
-  }
-  
+  display: inline-block;
+  width: 1px;
+  height: 20px; /* Ajustez la hauteur selon vos besoins */
+  background-color: #ccc; /* Couleur du trait de séparation */
+  margin: 0 10px; /* Marge autour du séparateur */
+}
