@@ -1,0 +1,10 @@
+<!-- nasa-picture.component.html -->
+<div class="container" *ngIf="pictureData">
+  <div class="image-container">
+    <img class="image" [src]="pictureData.url" alt="{{ pictureData.title }}">
+  </div>
+  <div class="text-container">
+    <h2>{{ pictureData.title }}</h2>
+    <p>{{ pictureData.explanation }}</p>
+  </div>
+</div>

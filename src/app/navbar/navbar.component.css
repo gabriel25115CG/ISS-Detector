@@ -1,0 +1,88 @@
+
+
+.navbar {
+    background-color: #1E90FF; /* Bleu clair */
+    color: #fff; /* Couleur du texte */
+    padding: 15px 0;
+    position: fixed; /* Barre de navigation fixe */
+    width: 100%; /* Largeur de la barre de navigation */
+    top: 0; /* Position en haut de la fenêtre */
+    left: 0;
+    margin: 0; /* Réinitialiser les marges */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* Couleur du texte */
+    text-decoration: none;
+    font-family: 'Arial', sans-serif; /* Changer la police */
+    background-size: cover; /* Ajoutez cette ligne */
+    background-position: center; /* Ajoutez cette ligne */
+    margin-left: -100px; /* Ajoutez une marge négative à gauche */
+  
+  
+  }
+  .navbar-brand img {
+    max-height: 50px; /* Hauteur maximale de l'image */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    flex-shrink: 0; /* Ajoutez cette ligne */
+  
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Ajoutez cette ligne */
+    justify-content: flex-end; /* Ajoutez cette ligne */
+  }
+  
+  .nav-item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .nav-link {
+    color: #fff; /* Couleur du texte */
+    text-decoration: none;
+    font-family: 'Arial', sans-serif; /* Changer la police */
+    position: relative; /* Position relative pour le lien */
+    transition: font-size 0.3s; /* Transition de la taille de la police */
+  }
+  
+  .nav-link:hover {
+    font-weight: bold; /* Texte en gras au survol */
+    font-size: 110%; /* Taille de la police augmentée au survol */
+    transition: font-size 0.2s; /* Réduire le temps de transition */
+  
+  }
+  
+  .active .nav-link {
+    font-weight: normal; /* Annuler le style gras pour l'élément actif */
+  }
+  
+  .btn-connexion {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #1E90FF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    margin-right: 10px; /* Réduire la marge à droite pour rapprocher les boutons */
+  }
+  
+ 
+  .btn-connexion:hover {
+    background-color: #ccc; /* Changement de couleur au survol */
+  }
+  

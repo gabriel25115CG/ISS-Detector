@@ -1,0 +1,46 @@
+/* nasa-picture.component.css */
+
+/* Redimensionner l'image */
+.image {
+    max-width: 100%; /* Redimensionner l'image pour qu'elle s'adapte à la largeur du conteneur */
+    max-height: 400px; /* Limiter la hauteur maximale des images */
+    border-radius: 20px;
+  }
+  
+  /* Style pour le conteneur de l'image et du texte */
+  .container {
+    display: flex; /* Activer l'affichage flex */
+    justify-content: space-between; /* Répartir l'espace entre les éléments */
+    align-items: center; /* Centrer verticalement les éléments */
+  }
+  /* Style pour le conteneur de l'image */
+  .image-container {
+    flex: 1; /* Prendre tout l'espace disponible */
+    margin-left: 50px;
+  }
+  
+  /* Style pour le conteneur du texte */
+  .text-container {
+    flex: 1; /* Prendre tout l'espace disponible */
+    padding-left: 20px; /* Espacement à gauche du texte */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour le texte */
+  .text-container h2 {
+    font-size: 2rem; /* Taille de police */
+    color: #333; /* Couleur du texte */
+    text-transform: uppercase; /* Transformer le texte en majuscules */
+    letter-spacing: 2px; /* Espacement des lettres */
+    margin-bottom: 20px; /* Marge en bas du titre */
+    font-family: 'Arial', sans-serif; /* Police de caractères */
+  }
+  
+  .text-container p {
+    margin-right: 50px; /* Espacement à droite du texte */
+    text-align: justify; /* Justifier le texte */
+  }
+  
