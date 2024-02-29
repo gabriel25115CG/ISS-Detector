@@ -10,8 +10,11 @@ import { AccueilTopComponent } from './accueil-top/accueil-top.component';
 import { NasaPictureComponent } from './nasa-picture/nasa-picture.component';
 import { SeparatorComponent } from './separator/separator.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { FirebaseService } from './firebase.service';
+import { NasaApiService } from './nasa-api.service';
+import { ContactformComponent } from './contactform/contactform.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,8 +26,9 @@ import { FooterComponent } from './footer/footer.component';
     NasaPictureComponent,
     SeparatorComponent,
     LoginComponent,
-    RegisterComponent,
     FooterComponent,
+    ContactformComponent,
+    RegisterComponent,
     
 
    
@@ -35,11 +39,10 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HttpClientModule,FirebaseService, NasaApiService, NgModule, FormData,],
+  
   bootstrap: [
     AppComponent,
-    RegisterComponent,
-    HttpClientModule,
     FormsModule,
     BrowserModule
     
