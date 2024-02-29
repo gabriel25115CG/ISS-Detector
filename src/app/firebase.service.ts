@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, AuthError, UserCredential } from 'firebase/auth'; // Assurez-vous que cette importation est correcte
 
 @Injectable({
   providedIn: 'root',
@@ -31,17 +31,35 @@ export class FirebaseService {
 
   async registerUser(email: string, password: string): Promise<void> {
     try {
-      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const userCredential: UserCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       // L'utilisateur est inscrit avec succès
       const user = userCredential.user;
       console.log('Utilisateur inscrit:', user);
     } catch (error: any) {
       // Une erreur s'est produite lors de l'inscription de l'utilisateur
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      const errorCode = (error as AuthError).code;
+      const errorMessage = (error as AuthError).message;
       console.error('Erreur lors de l\'inscription:', errorMessage);
       throw error;
     }
+  }
+
+  async loginUser(email: string, password: string): Promise<void> {
+    try {
+      const userCredential: UserCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      // L'utilisateur est connecté avec succès
+      const user = userCredential.user;
+      console.log('Utilisateur connecté:', user);
+    } catch (error: any) {
+      // Une erreur s'est produite lors de la connexion de l'utilisateur
+      const errorCode = (error as AuthError).code;
+      const errorMessage = (error as AuthError).message;
+      console.error('Erreur lors de la connexion:', errorMessage);
+      throw error;
+    }
+  }
+  isLoggedIn(): boolean {
+    return !!this.auth.currentUser; // Renvoie vrai si l'utilisateur est connecté, faux sinon
   }
 
   // Autres méthodes Firebase (par exemple, pour ajouter un document à Firestore) peuvent être ajoutées ici

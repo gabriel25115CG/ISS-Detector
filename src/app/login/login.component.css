@@ -1,76 +1,80 @@
-/* login.component.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-.background-container {
-  display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
+.background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/background3.jpg');
   background-size: cover;
   background-position: center;
+  filter: blur(10px); /* Effet de flou */
 }
 
-.login-container {
-  width: 350px;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  color: #333;
+.contact-form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 400px; /* Elargissement du formulaire */
+}
+
+.contact-form h2 {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
+.contact-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Couleur du texte de l'attribut placeholder avec 70% de transparence */
+}
+
 
 label {
-  font-family: 'Roboto', sans-serif;
-  color: #555;
+  display: block;
+  margin-bottom: 5px;
+  color: #fff; /* Couleur du texte pour les labels */
 }
 
-.form-control {
-  width: calc(100% - 24px); /* Réduire la largeur par 24px */
-  padding: 12px;
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff; /* Couleur du texte pour les champs de saisie */
 }
-.btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 12px 24px;
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; /* Bouton bleu */
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
-  display: block;
-  width: 100%;
+  transition: background-color 0.3s ease; /* Transition lors du survol */
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.register-link {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
-
-.register-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.register-link a:hover {
-  text-decoration: underline;
+button:hover {
+  background-color: #0056b3; /* Changement de couleur lors du survol */
 }

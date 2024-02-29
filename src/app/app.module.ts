@@ -15,6 +15,7 @@ import { FirebaseService } from './firebase.service';
 import { NasaApiService } from './nasa-api.service';
 import { ContactformComponent } from './contactform/contactform.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeAUTComponent } from './home-aut/home-aut.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     ContactformComponent,
     RegisterComponent,
+    HomeAUTComponent,
     
 
    

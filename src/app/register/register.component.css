@@ -33,10 +33,16 @@ body {
     color: #fff;
     width: 400px; /* Elargissement du formulaire */
   }
-  
+
+  .contact-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Couleur du texte de l'attribut placeholder avec 70% de transparence */
+  }
+
   .contact-form h2 {
     margin-bottom: 20px;
     text-align: center;
+    color: #fff; /* Couleur du texte */
+
   }
   
   .form-group {
