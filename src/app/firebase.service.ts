@@ -3,6 +3,10 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, AuthError, UserCredential } from 'firebase/auth'; // Assurez-vous que cette importation est correcte
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +14,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Au
 export class FirebaseService {
   private db: any;
   private auth: any;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = new Observable<boolean>();
 
   constructor() {
     const firebaseConfig = {
@@ -58,8 +64,8 @@ export class FirebaseService {
       throw error;
     }
   }
-  isLoggedIn(): boolean {
-    return !!this.auth.currentUser; // Renvoie vrai si l'utilisateur est connecté, faux sinon
+  isLoggedIn(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable(); // Renvoie vrai si l'utilisateur est connecté, faux sinon
   }
 
   // Autres méthodes Firebase (par exemple, pour ajouter un document à Firestore) peuvent être ajoutées ici
