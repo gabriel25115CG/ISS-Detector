@@ -13,7 +13,7 @@ export class RegisterComponent {
 
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-  register(email: string, password: string, confirmPassword: string) {
+  register(email: string, password: string, confirmPassword: string,  pseudonyme: string) {
     if (password !== confirmPassword) {
       alert('Password and Confirm Password do not match'); // Affichage d'une pop-up en cas de mots de passe non correspondants
       return; // Arrêter l'inscription si les mots de passe ne correspondent pas
