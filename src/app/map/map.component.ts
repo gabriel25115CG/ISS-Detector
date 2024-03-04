@@ -8,10 +8,15 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements AfterViewInit {
   private map: any;
+  private issIcon = L.icon({
+    iconUrl: 'assets/iss-icon.png', // Vous devrez fournir une image pour l'icône de l'ISS
+    iconSize: [50, 50],
+    iconAnchor: [25, 25]
+  });
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 39.8282, -98.5795 ],
+      center: [0, 0],
       zoom: 3
     });
 
@@ -22,6 +27,21 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
+
+    // Ajout de l'icône de l'ISS à la carte
+    const issMarker = L.marker([0, 0], { icon: this.issIcon }).addTo(this.map);
+
+    // Récupération des données de localisation de l'ISS en temps réel toutes les secondes
+    setInterval(() => {
+      fetch('https://api.wheretheiss.at/v1/satellites/25544')
+        .then(response => response.json())
+        .then(data => {
+          const { latitude, longitude } = data;
+          issMarker.setLatLng([latitude, longitude]);
+          this.map.setView([latitude, longitude]);
+        })
+        .catch(error => console.error('Error fetching ISS data:', error));
+    }, 1000);
   }
 
   constructor() { }
