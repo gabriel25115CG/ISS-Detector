@@ -16,6 +16,8 @@ import { NasaApiService } from './nasa-api.service';
 import { ContactformComponent } from './contactform/contactform.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeAUTComponent } from './home-aut/home-aut.component';
+import { NavbarautComponent } from './navbaraut/navbaraut.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { HomeAUTComponent } from './home-aut/home-aut.component';
     ContactformComponent,
     RegisterComponent,
     HomeAUTComponent,
+    NavbarautComponent,
+    MapComponent,
     
 
    

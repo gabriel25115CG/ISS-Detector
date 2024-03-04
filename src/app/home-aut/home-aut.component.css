@@ -1,0 +1,12 @@
+
+#map-container {
+    width: 600px; /* Largeur fixe */
+    height: 400px; /* Hauteur fixe */
+    border: 1px solid #ccc; /* Bordure pour le rectangle */
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  

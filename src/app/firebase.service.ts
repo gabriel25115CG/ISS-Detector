@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, AuthError, UserCredential } from 'firebase/auth'; // Assurez-vous que cette importation est correcte
-import { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
-
-
+import { getFirestore } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, AuthError, UserCredential, onAuthStateChanged, User, updateProfile  } from 'firebase/auth'; // Assurez-vous que cette importation est correcte
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +12,9 @@ export class FirebaseService {
   private db: any;
   private auth: any;
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$: Observable<boolean> = new Observable<boolean>();
+  private currentUserSubject = new BehaviorSubject<string>(''); // Subject pour stocker le pseudonyme de l'utilisateur
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+  currentUser$: Observable<string> = this.currentUserSubject.asObservable();
 
   constructor() {
     const firebaseConfig = {
@@ -33,19 +32,37 @@ export class FirebaseService {
     const analytics = getAnalytics(app);
     this.db = getFirestore(app);
     this.auth = getAuth(app);
+
+    // Écoute les changements d'état de l'authentification
+    onAuthStateChanged(this.auth, (user: User | null) => {
+      if (user) {
+        this.isLoggedInSubject.next(true);
+        this.setCurrentUser(user); // Met à jour le pseudonyme de l'utilisateur connecté
+      } else {
+        this.isLoggedInSubject.next(false);
+        this.currentUserSubject.next(''); // Réinitialise le pseudonyme si l'utilisateur se déconnecte
+      }
+    });
   }
 
-  async registerUser(email: string, password: string): Promise<void> {
+  private setCurrentUser(user: User) {
+    // Récupère le pseudonyme de l'utilisateur
+    // Vous devrez adapter cette fonction pour récupérer le pseudonyme de l'utilisateur à partir de votre base de données ou d'une autre source
+    const pseudonyme = user.displayName || 'Utilisateur';
+    this.currentUserSubject.next(pseudonyme);
+  }
+
+  async registerUser(email: string, password: string, pseudonyme: string): Promise<void> {
     try {
       const userCredential: UserCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      // L'utilisateur est inscrit avec succès
       const user = userCredential.user;
-      console.log('Utilisateur inscrit:', user);
+  
+      // Enregistrez le pseudonyme avec l'utilisateur dans Firebase
+      await updateProfile(user, { displayName: pseudonyme });
+  
+      console.log('User registered:', user);
     } catch (error: any) {
-      // Une erreur s'est produite lors de l'inscription de l'utilisateur
-      const errorCode = (error as AuthError).code;
-      const errorMessage = (error as AuthError).message;
-      console.error('Erreur lors de l\'inscription:', errorMessage);
+      console.error('Error registering user:', error);
       throw error;
     }
   }
@@ -53,20 +70,21 @@ export class FirebaseService {
   async loginUser(email: string, password: string): Promise<void> {
     try {
       const userCredential: UserCredential = await signInWithEmailAndPassword(this.auth, email, password);
-      // L'utilisateur est connecté avec succès
       const user = userCredential.user;
       console.log('Utilisateur connecté:', user);
     } catch (error: any) {
-      // Une erreur s'est produite lors de la connexion de l'utilisateur
       const errorCode = (error as AuthError).code;
       const errorMessage = (error as AuthError).message;
       console.error('Erreur lors de la connexion:', errorMessage);
       throw error;
     }
   }
+
   isLoggedIn(): Observable<boolean> {
-    return this.isLoggedInSubject.asObservable(); // Renvoie vrai si l'utilisateur est connecté, faux sinon
+    return this.isLoggedInSubject.asObservable();
   }
 
-  // Autres méthodes Firebase (par exemple, pour ajouter un document à Firestore) peuvent être ajoutées ici
+  getCurrentUser(): Observable<string> {
+    return this.currentUserSubject.asObservable();
+  }
 }
