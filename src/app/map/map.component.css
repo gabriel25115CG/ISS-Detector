@@ -16,3 +16,9 @@
   border-radius: 15px; /* Coins arrondis plus prononcés */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre */
 }
+
+.leaflet-popup-content-wrapper {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
