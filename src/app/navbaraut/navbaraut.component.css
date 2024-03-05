@@ -18,3 +18,11 @@
     margin-right: 30px; /* Ajustez cette valeur selon vos besoins */
   
   }
+
+  .navbar-profile {
+    width: 45px; /* Ajustez la largeur de l'icône de profil selon vos besoins */
+    height: auto; /* Pour conserver les proportions */
+    margin-left: 45px;
+    margin-right: -62px;
+  }
+  
