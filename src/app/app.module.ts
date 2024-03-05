@@ -35,13 +35,12 @@ import { MapComponent } from './map/map.component';
     HomeAUTComponent,
     NavbarautComponent,
     MapComponent,
-    
 
    
   ],
   imports: [
   BrowserModule,
-    FormsModule, // Déplacez FormsModule ici
+    FormsModule, 
     HttpClientModule,
     AppRoutingModule
   ],

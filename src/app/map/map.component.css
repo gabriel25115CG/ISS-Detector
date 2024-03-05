@@ -1,10 +1,18 @@
+.map-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Arial, sans-serif; /* Exemple de police, remplacez par la police souhaitée */
+  margin-bottom: 20px;
+}
+
 #map {
-  margin-top: 30px;
+  margin-top: 10px; /* Réduire l'espace entre le titre et la carte */
   height: 600px;
-  width: 900px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #ddd; /* Couleur de la bordure légèrement plus claire */
+  border: 2.5px solid #ddd; /* Couleur de la bordure légèrement plus claire */
   border-radius: 15px; /* Coins arrondis plus prononcés */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre */
 }
