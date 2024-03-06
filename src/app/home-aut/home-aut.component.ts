@@ -13,12 +13,12 @@ export class HomeAUTComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
-    this.firebaseService.isLoggedIn().subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      if (!this.isLoggedIn) {
+    // this.firebaseService.isLoggedIn().subscribe(isLoggedIn => {
+    //   this.isLoggedIn = isLoggedIn;
+      if (! this.firebaseService.isLoggedIn()) {
         // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
-        this.router.navigate(['/login']); // Utiliser le service Router pour naviguer vers la page de connexion
+        this.router.navigate(['/homeAUT']); // Utiliser le service Router pour naviguer vers la page de connexion
       }
-    });
+    // });
   }
 }

@@ -67,11 +67,23 @@ export class FirebaseService {
     }
   }
 
-  async loginUser(email: string, password: string): Promise<void> {
+
+  async loginUser(email: string, password: string): Promise<string> {
     try {
-      const userCredential: UserCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      const auth = getAuth(); // Récupérer l'objet d'authentification
+      const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log('Utilisateur connecté:', user);
+      
+      // Récupérer le token JWT de l'utilisateur
+      const idToken = await user.getIdToken();
+  
+      // Stocker le token JWT dans le stockage local du navigateur
+      localStorage.setItem('token', idToken);
+      console.log('Token JWT:', idToken);
+      console.log(localStorage.getItem('token'))
+  
+      return idToken; // Retourner le token JWT
     } catch (error: any) {
       const errorCode = (error as AuthError).code;
       const errorMessage = (error as AuthError).message;
@@ -80,8 +92,14 @@ export class FirebaseService {
     }
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.isLoggedInSubject.asObservable();
+
+  // isLoggedIn(): Observable<boolean> {
+  //   return this.isLoggedInSubject.asObservable();
+  // }
+
+  isLoggedIn() {
+
+    return localStorage.getItem('token') != null;
   }
 
   getCurrentUser(): Observable<string> {
