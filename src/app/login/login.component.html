@@ -1,5 +1,10 @@
 <app-navbar></app-navbar>
 
+<div class="login-container">
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="loader"></div>
+  </div>
+
 <div class="container">
   <div class="background"></div>
   <div class="container">
@@ -16,6 +21,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
+      <br>
       <p>Don't have an account? <a [routerLink]="['/register']" style="color: white;">Register here</a></p>
     </div>
   </div>

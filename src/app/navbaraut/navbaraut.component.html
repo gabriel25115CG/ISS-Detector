@@ -11,13 +11,13 @@
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" routerLink="/about">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Contact</a>        
         </li>
       </ul>
-      <button class="btn btn-outline-light" type="button" [routerLink]="['/home']">Log Out</button>
+      <button class="btn btn-outline-danger" type="button" [routerLink]="['/home']">Log Out</button>
     </div>
     <img src="assets/profile2.png" alt="Profile" class="navbar-profile ml-auto"> <!-- Ajout de l'icône de profil à droite -->
   </div>

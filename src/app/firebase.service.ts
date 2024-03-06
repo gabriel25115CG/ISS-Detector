@@ -93,9 +93,6 @@ export class FirebaseService {
   }
 
 
-  // isLoggedIn(): Observable<boolean> {
-  //   return this.isLoggedInSubject.asObservable();
-  // }
 
   isLoggedIn() {
 

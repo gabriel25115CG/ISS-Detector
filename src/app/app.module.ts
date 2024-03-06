@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeAUTComponent } from './home-aut/home-aut.component';
 import { NavbarautComponent } from './navbaraut/navbaraut.component';
 import { MapComponent } from './map/map.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MapComponent } from './map/map.component';
     HomeAUTComponent,
     NavbarautComponent,
     MapComponent,
+    AboutComponent,
 
    
   ],

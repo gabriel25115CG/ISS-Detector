@@ -6,6 +6,7 @@ import { ContactformComponent } from './contactform/contactform.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticatedService } from './authenticated.service'; // Importez le service de garde de route
 import { HomeAUTComponent } from './home-aut/home-aut.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactformComponent }, // Route pour la page de contact
   { path: 'register', component: RegisterComponent }, // Route pour la page d'inscription
   { path: 'home', component: HomeComponent, canActivate: [AuthenticatedService] }, // Utilisez le service de garde de route pour protéger la route vers la page d'accueil
-  { path: 'homeAUT', component: HomeAUTComponent, canActivate: [AuthenticatedService] } // Route vers HomeAUT accessible uniquement aux utilisateurs authentifiés
-
+  { path: 'homeAUT', component: HomeAUTComponent, canActivate: [AuthenticatedService] }, // Route vers HomeAUT accessible uniquement aux utilisateurs authentifiés
+  { path: 'about', component: AboutComponent } // Route pour la page d'accueil
 
 
   
