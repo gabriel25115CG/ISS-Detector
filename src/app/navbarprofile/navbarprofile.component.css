@@ -1,0 +1,29 @@
+.navbar-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo-container {
+    margin-right: auto;
+  }
+  
+  .navbar-logo {
+    width: 50px; /* Ajustez la taille du logo selon vos besoins */
+    height: auto;
+  }
+  
+  #logo {
+    margin-left: -75px;
+    align-self: flex-start;
+    margin-right: 30px; /* Ajustez cette valeur selon vos besoins */
+  
+  }
+
+  .navbar-profile {
+    width: 45px; /* Ajustez la largeur de l'icône de profil selon vos besoins */
+    height: auto; /* Pour conserver les proportions */
+    margin-left: 45px;
+    margin-right: -62px;
+  }
+  
+ 

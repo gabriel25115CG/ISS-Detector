@@ -19,6 +19,8 @@ import { HomeAUTComponent } from './home-aut/home-aut.component';
 import { NavbarautComponent } from './navbaraut/navbaraut.component';
 import { MapComponent } from './map/map.component';
 import { AboutComponent } from './about/about.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NavbarprofileComponent } from './navbarprofile/navbarprofile.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { AboutComponent } from './about/about.component';
     NavbarautComponent,
     MapComponent,
     AboutComponent,
+    ProfileComponent,
+    NavbarprofileComponent,
 
    
   ],
