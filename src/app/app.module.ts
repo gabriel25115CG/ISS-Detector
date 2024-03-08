@@ -21,6 +21,7 @@ import { MapComponent } from './map/map.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarprofileComponent } from './navbarprofile/navbarprofile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { NavbarprofileComponent } from './navbarprofile/navbarprofile.component'
     AboutComponent,
     ProfileComponent,
     NavbarprofileComponent,
+    UserProfileComponent,
 
    
   ],

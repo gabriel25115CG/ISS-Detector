@@ -13,6 +13,8 @@ import {
   updateProfile,
 } from 'firebase/auth'; 
 import { Observable, BehaviorSubject } from 'rxjs';
+import { sendPasswordResetEmail } from 'firebase/auth'; // Importez la méthode pour envoyer un e-mail de réinitialisation du mot de passe
+
 
 @Injectable({
   providedIn: 'root',
@@ -114,7 +116,29 @@ export class FirebaseService {
     return localStorage.getItem('token') != null;
   }
 
-  getCurrentUser(): Observable<string> {
-    return this.currentUserSubject.asObservable();
+  getCurrentUser(): Observable<string | null> {
+    return this.currentUser$;
+  }
+  
+  getUserEmail(): string | null {
+    const user = this.auth.currentUser;
+    if (user && user.email) {
+      return user.email;
+    } else {
+      return null;
+    }
+  }
+
+
+  async resetPassword(email: string): Promise<void> {
+    try {
+      await sendPasswordResetEmail(this.auth, email);
+      console.log('Email de réinitialisation du mot de passe envoyé.');
+    } catch (error: any) {
+      console.error('Erreur lors de la réinitialisation du mot de passe :', error);
+      throw error;
+    }
   }
 }
+
+
