@@ -35,8 +35,7 @@ export class FirebaseService {
     const firebaseConfig = {
       apiKey: 'AIzaSyCtqic4VFqa5yOsHcJ7vs1_suJWvUJ7YQA',
       authDomain: 'iss-detector-b114b.firebaseapp.com',
-      databaseURL:
-        'https://iss-detector-b114b-default-rtdb.europe-west1.firebasedatabase.app',
+      databaseURL: 'https://iss-detector-b114b-default-rtdb.europe-west1.firebasedatabase.app',
       projectId: 'iss-detector-b114b',
       storageBucket: 'iss-detector-b114b.appspot.com',
       messagingSenderId: '51960108231',
@@ -75,8 +74,7 @@ async getUserDescription(): Promise<string> {
     const docRef = doc(this.db, 'userDescriptions', user.uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      return docSnap.data()['description'];
-
+      return docSnap.data()['description']; // Utiliser ['description'] pour accéder à la propriété
     } else {
       return '';
     }
@@ -93,6 +91,23 @@ async saveUserDescription(description: string): Promise<void> {
     await setDoc(docRef, { description });
   } else {
     throw new Error('Utilisateur non connecté.');
+  }
+}
+
+async saveUserPseudonyme(newPseudonyme: string): Promise<void> {
+  try {
+    const user = this.auth.currentUser;
+    if (user) {
+      await updateProfile(user, { displayName: newPseudonyme });
+      console.log('Pseudonyme utilisateur sauvegardé avec succès.');
+      // Mettre à jour le pseudonyme dans le sujet
+      this.setCurrentUser(user);
+    } else {
+      throw new Error('Utilisateur non connecté.');
+    }
+  } catch (error: any) {
+    console.error('Erreur lors de la sauvegarde du pseudonyme utilisateur :', error);
+    throw error;
   }
 }
 

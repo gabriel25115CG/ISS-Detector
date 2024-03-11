@@ -1,3 +1,5 @@
+<br>
+<br>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -27,16 +29,21 @@
           <div class="form-group row">
             <label for="description" class="col-sm-4 col-form-label font-weight-bold">Description:</label>
             <div class="col-sm-6">
+              <!-- Afficher la description de l'utilisateur -->
               <p id="description" class="form-control-plaintext" *ngIf="!descriptionEditing">{{ userDescription }}</p>
               <textarea id="description" class="form-control" *ngIf="descriptionEditing" [(ngModel)]="userDescription"></textarea>
             </div>
             <div class="col-sm-2">
+              <!-- Bouton pour basculer le mode d'édition de la description -->
               <button class="reset-button zoom-on-hover" (click)="toggleDescriptionEdit()">
                 <img src="assets/edit.png" alt="Edit" height="20">
               </button>
             </div>
           </div>
-          <button class="btn btn-primary" (click)="saveDescription()" *ngIf="descriptionEditing">Save</button>
+          <!-- Bouton pour sauvegarder la description de l'utilisateur -->
+          <button class="btn btn-primary" (click)="saveDescription()" *ngIf="descriptionEditing">Enregistrer</button>
+          <!-- Bouton pour sauvegarder le pseudonyme de l'utilisateur -->
+          <button class="btn btn-primary" (click)="savePseudo()" *ngIf="editing">Enregistrer Pseudonyme</button>
         </div>
       </div>
     </div>

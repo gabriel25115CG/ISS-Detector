@@ -23,8 +23,10 @@ export class RegisterComponent {
         this.registrationMessage = 'Success: User registered successfully';
         this.router.navigate(['/login']);
       })
-      .catch((error) => {
-        this.registrationMessage = `Error: ${error.message}`;
+      .catch((error: any) => {
+        // Vérifiez si l'erreur a un message
+        const errorMessage = error?.message || 'An error occurred during registration';
+        this.registrationMessage = `Error: ${errorMessage}`;
       });
   }
 }
