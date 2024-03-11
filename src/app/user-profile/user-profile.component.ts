@@ -7,8 +7,11 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  currentUser: any; // Déclarez la propriété currentUser comme un objet utilisateur
-  userEmail: string | null = null; // Ajoutez une propriété pour stocker l'e-mail de l'utilisateur
+  currentUser: any;
+  userEmail: string | null = null;
+  newPseudo: string = ''; // Ajout d'une propriété pour stocker le nouveau pseudonyme
+  editing: boolean = false; // Ajout de la propriété editing
+
 
   constructor(private firebaseService: FirebaseService) { }
 
@@ -16,7 +19,28 @@ export class UserProfileComponent implements OnInit {
     this.firebaseService.getCurrentUser().subscribe((user: any) => {
       this.currentUser = user;
       this.userEmail = this.firebaseService.getUserEmail();
-
     });
+  }
+
+  // Méthode pour mettre à jour le pseudonyme
+  updatePseudonyme(): void {
+    if (this.newPseudo.trim() !== '') {
+      this.firebaseService.updatePseudonyme(this.newPseudo)
+        .then(() => {
+          console.log('Pseudonyme mis à jour avec succès.');
+          // Rafraîchir les données utilisateur
+          this.firebaseService.getCurrentUser().subscribe((user: any) => {
+            this.currentUser = user;
+          });
+        })
+        .catch((error: any) => {
+          console.error('Erreur lors de la mise à jour du pseudonyme :', error);
+        });
+    }
+  }
+
+   // Méthode pour basculer le mode d'édition
+   toggleEdit(): void {
+    this.editing = !this.editing;
   }
 }

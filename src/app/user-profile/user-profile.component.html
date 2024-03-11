@@ -1,5 +1,34 @@
-<div>
-  <h2>Informations de l'utilisateur</h2>
-  <p>Pseudonyme: {{ currentUser }}</p>
-  <p>Adresse e-mail: {{ userEmail }}</p> <!-- Ajoutez cette ligne pour afficher l'adresse e-mail -->
+<br>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-dark shadow">
+        <div class="card-header bg-dark text-white">
+          <h2 class="card-title mb-0">User Info</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="pseudo" class="col-sm-4 col-form-label font-weight-bold">Pseudonyme:</label>
+            <div class="col-sm-6">
+              <p id="pseudo" class="form-control-plaintext" *ngIf="!editing">{{ currentUser }}</p>
+              <input type="text" id="pseudo" class="form-control" *ngIf="editing" [(ngModel)]="newPseudo">
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" (click)="toggleEdit()">{{ editing ? 'Save' : 'Edit' }}</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-sm-4 col-form-label font-weight-bold">Email:</label>
+            <div class="col-sm-8">
+              <p id="email" class="form-control-plaintext">{{ userEmail }}</p>
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="updatePseudonyme()" *ngIf="editing">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+

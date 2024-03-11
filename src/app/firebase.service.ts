@@ -11,6 +11,7 @@ import {
   onAuthStateChanged,
   User,
   updateProfile,
+
 } from 'firebase/auth'; 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { sendPasswordResetEmail } from 'firebase/auth'; // Importez la méthode pour envoyer un e-mail de réinitialisation du mot de passe
@@ -26,6 +27,7 @@ export class FirebaseService {
   private currentUserSubject = new BehaviorSubject<string>(''); 
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
   currentUser$: Observable<string> = this.currentUserSubject.asObservable();
+  
 
   constructor() {
     const firebaseConfig = {
@@ -139,6 +141,25 @@ export class FirebaseService {
       throw error;
     }
   }
+
+  async updatePseudonyme(newPseudonyme: string): Promise<void> {
+    try {
+      const user = this.auth.currentUser;
+      if (user) {
+        await updateProfile(user, { displayName: newPseudonyme });
+        console.log('Pseudonyme mis à jour avec succès.');
+        // Actualiser le pseudonyme dans le sujet
+        this.setCurrentUser(user);
+      } else {
+        throw new Error('Utilisateur non connecté.');
+      }
+    } catch (error: any) {
+      console.error('Erreur lors de la mise à jour du pseudonyme :', error);
+      throw error;
+    }
+  }
+
+
 }
 
 
