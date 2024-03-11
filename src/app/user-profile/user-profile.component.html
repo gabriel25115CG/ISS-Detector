@@ -15,7 +15,11 @@
               <input type="text" id="pseudo" class="form-control" *ngIf="editing" [(ngModel)]="newPseudo">
             </div>
             <div class="col-sm-2">
-              <button class="btn btn-primary" (click)="toggleEdit()">{{ editing ? 'Save' : 'Edit' }}</button>
+              
+              <button class="reset-button zoom-on-hover" (click)="toggleEdit()">
+                <img src="assets/edit.png" alt="Edit" height="20">
+              </button>
+              
             </div>
           </div>
           <div class="form-group row">
@@ -30,5 +34,3 @@
     </div>
   </div>
 </div>
-
-
