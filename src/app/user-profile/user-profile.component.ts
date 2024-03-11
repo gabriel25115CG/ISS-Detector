@@ -8,12 +8,15 @@ import { FirebaseService } from '../firebase.service';
 })
 export class UserProfileComponent implements OnInit {
   currentUser: any; // Déclarez la propriété currentUser comme un objet utilisateur
+  userEmail: string | null = null; // Ajoutez une propriété pour stocker l'e-mail de l'utilisateur
 
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
     this.firebaseService.getCurrentUser().subscribe((user: any) => {
       this.currentUser = user;
+      this.userEmail = this.firebaseService.getUserEmail();
+
     });
   }
 }
