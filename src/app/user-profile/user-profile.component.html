@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
           <div class="form-group row">
-            <label for="pseudo" class="col-sm-4 col-form-label font-weight-bold">Pseudonyme:</label>
+            <label for="pseudo" class="col-sm-4 col-form-label font-weight-bold">Pseudonym :</label>
             <div class="col-sm-6">
               <p id="pseudo" class="form-control-plaintext" *ngIf="!editing">{{ currentUser }}</p>
               <input type="text" id="pseudo" class="form-control" *ngIf="editing" [(ngModel)]="newPseudo">
@@ -21,20 +21,25 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="email" class="col-sm-4 col-form-label font-weight-bold">Email:</label>
+            <label for="email" class="col-sm-4 col-form-label font-weight-bold">Email :</label>
             <div class="col-sm-8">
               <p id="email" class="form-control-plaintext">{{ userEmail }}</p>
             </div>
           </div>
-          <div class="form-group row">        
-            <div class="col-sm-2">
-          
+          <br>
+          <div class="form-group row justify-content-center">
+            <div class="col-sm-6 text-center">
             </div>
           </div>
           <!-- Bouton pour sauvegarder le pseudonyme de l'utilisateur -->
-          <button class="btn btn-primary" (click)="savePseudo()" *ngIf="editing">Save Pseudonyme</button>
+          <div class="form-group row justify-content-center">
+            <div class="col-sm-6 text-center">
+              <button class="btn btn-primary" (click)="savePseudo()" *ngIf="editing">Save Pseudonyme</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

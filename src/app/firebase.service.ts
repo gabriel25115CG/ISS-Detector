@@ -15,7 +15,7 @@ import {
 } from 'firebase/auth'; 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { sendPasswordResetEmail } from 'firebase/auth'; 
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 
 
 
@@ -67,32 +67,6 @@ export class FirebaseService {
     this.currentUserSubject.next(pseudonyme);
   }
 
-// Méthode pour récupérer la description de l'utilisateur
-async getUserDescription(): Promise<string> {
-  const user = this.auth.currentUser;
-  if (user) {
-    const docRef = doc(this.db, 'userDescriptions', user.uid);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return docSnap.data()['description']; // Utiliser ['description'] pour accéder à la propriété
-    } else {
-      return '';
-    }
-  } else {
-    return '';
-  }
-}
-
-// Méthode pour sauvegarder la description de l'utilisateur
-async saveUserDescription(description: string): Promise<void> {
-  const user = this.auth.currentUser;
-  if (user) {
-    const docRef = doc(this.db, 'userDescriptions', user.uid);
-    await setDoc(docRef, { description });
-  } else {
-    throw new Error('Utilisateur non connecté.');
-  }
-}
 
 async saveUserPseudonyme(newPseudonyme: string): Promise<void> {
   try {
@@ -159,6 +133,26 @@ async registerUser(
       throw error;
     }
   }
+
+  async deleteProfile(): Promise<void> {
+    const user = this.auth.currentUser;
+    if (user) {
+      try {
+        // Supprimer le document userDescriptions correspondant à l'utilisateur
+        const docRef = doc(this.db, 'userDescriptions', user.uid);
+        await deleteDoc(docRef);
+        // Supprimer l'utilisateur de la base de données d'authentification
+        await user.delete(); // Utiliser la méthode delete() sur l'objet User pour supprimer l'utilisateur
+        console.log('User profile deleted successfully.');
+      } catch (error: any) {
+        console.error('Error deleting user profile:', error);
+        throw error;
+      }
+    } else {
+      throw new Error('User not logged in.');
+    }
+  }
+  
 
   isLoggedIn() {
     return localStorage.getItem('token') != null;

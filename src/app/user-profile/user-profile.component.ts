@@ -22,19 +22,10 @@ export class UserProfileComponent implements OnInit {
     this.firebaseService.getCurrentUser().subscribe(async (user: any) => {
       this.currentUser = user;
       this.userEmail = this.firebaseService.getUserEmail();
-      await this.fetchUserDescription(); // Appel de la fonction pour récupérer la description au chargement du composant
     });
   }
 
-  // Fonction pour récupérer la description de l'utilisateur
-  async fetchUserDescription(): Promise<void> {
-    try {
-      const description: string = await this.firebaseService.getUserDescription();
-      this.userDescription = description;
-    } catch (error) {
-      console.error('Error fetching user description:', error);
-    }
-  }
+ 
 
   // Fonction pour basculer le mode d'édition pour le pseudonyme
   toggleEdit(): void {
@@ -67,17 +58,5 @@ export class UserProfileComponent implements OnInit {
     this.descriptionEditing = !this.descriptionEditing;
   }
 
-  // Fonction pour sauvegarder la description de l'utilisateur
-  saveDescription(): void {
-    if (this.userDescription.trim() !== '') {
-      this.firebaseService.saveUserDescription(this.userDescription)
-        .then(() => {
-          console.log('Description utilisateur sauvegardée avec succès.');
-          this.descriptionEditing = false;
-        })
-        .catch((error: any) => {
-          console.error('Erreur lors de la sauvegarde de la description utilisateur :', error);
-        });
-    }
-  }
 }
+
