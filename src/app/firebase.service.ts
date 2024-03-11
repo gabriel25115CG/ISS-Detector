@@ -134,24 +134,6 @@ async registerUser(
     }
   }
 
-  async deleteProfile(): Promise<void> {
-    const user = this.auth.currentUser;
-    if (user) {
-      try {
-        // Supprimer le document userDescriptions correspondant à l'utilisateur
-        const docRef = doc(this.db, 'userDescriptions', user.uid);
-        await deleteDoc(docRef);
-        // Supprimer l'utilisateur de la base de données d'authentification
-        await user.delete(); // Utiliser la méthode delete() sur l'objet User pour supprimer l'utilisateur
-        console.log('User profile deleted successfully.');
-      } catch (error: any) {
-        console.error('Error deleting user profile:', error);
-        throw error;
-      }
-    } else {
-      throw new Error('User not logged in.');
-    }
-  }
   
 
   isLoggedIn() {
