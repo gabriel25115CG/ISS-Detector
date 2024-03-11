@@ -115,17 +115,15 @@ async saveUserPseudonyme(newPseudonyme: string): Promise<void> {
 async registerUser(
   email: string,
   password: string,
-  pseudonyme: string,
-  description: string 
+  pseudonyme: string
 ): Promise<void> {
   try {
     const userCredential: UserCredential =
       await createUserWithEmailAndPassword(this.auth, email, password);
     const user = userCredential.user;
 
-    // Enregistrez le pseudonyme et la description avec l'utilisateur dans Firebase
+    // Enregistrez le pseudonyme avec l'utilisateur dans Firebase
     await updateProfile(user, { displayName: pseudonyme });
-    await setDoc(doc(this.db, 'users', user.uid), { description }); // Sauvegarde de la description dans la base de données Firebase
 
     console.log('User registered:', user);
   } catch (error: any) {

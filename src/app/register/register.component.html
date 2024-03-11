@@ -3,7 +3,7 @@
 <div class="container">
   <div class="contact-form">
     <h2>Registration Form</h2>
-    <form (ngSubmit)="register(email.value, password.value, confirmPassword.value, pseudonyme.value, description.value)">
+    <form (ngSubmit)="register(email.value, password.value, confirmPassword.value, pseudonyme.value)">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" #email required>
@@ -22,11 +22,6 @@
         <label for="pseudonyme">Pseudonyme:</label>
         <input type="text" id="pseudonyme" name="pseudonyme" class="form-control" placeholder="Enter your pseudonyme" #pseudonyme required>
       </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" class="form-control" placeholder="Enter your description" #description required></textarea>
-      </div>
-      
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Register</button>
       </div>
