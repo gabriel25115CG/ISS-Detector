@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { FirebaseService } from '../firebase.service';
+
 
 @Component({
   selector: 'app-map',
@@ -13,6 +15,9 @@ export class MapComponent implements AfterViewInit {
     iconSize: [50, 50],
     iconAnchor: [25, 25]
   });
+
+  welcomeMessage: string = '';
+
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -55,8 +60,20 @@ export class MapComponent implements AfterViewInit {
       issMarker.closePopup();
     });
   }
+  constructor(private firebaseService: FirebaseService) { }
 
-  constructor() { }
+  ngOnInit(): void {
+    // Écoutez les changements de l'utilisateur actuel
+    this.firebaseService.getCurrentUser().subscribe(pseudonyme => {
+      if (pseudonyme) {
+        this.welcomeMessage = `Welcome ${pseudonyme}`;
+      } else {
+        this.welcomeMessage = ''; 
+      }
+    });
+  }
+
+
 
   ngAfterViewInit(): void {
     this.initMap();

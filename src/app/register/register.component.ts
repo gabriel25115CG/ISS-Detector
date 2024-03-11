@@ -8,21 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  registrationMessage: string = ''; // Message de succès ou d'erreur
 
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-  register(email: string, password: string, confirmPassword: string, pseudonyme: string) {
+  register(email: string, password: string, confirmPassword: string, pseudonyme: string, description: string) {
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password do not match');
+      this.registrationMessage = 'Error: Passwords do not match';
       return;
     }
-    this.firebaseService.registerUser(email, password, pseudonyme)
+
+    this.firebaseService.registerUser(email, password, pseudonyme, description)
       .then(() => {
-        alert('User registered successfully');
+        this.registrationMessage = 'Success: User registered successfully';
         this.router.navigate(['/login']);
       })
       .catch((error) => {
-        console.error('Error registering user:', error);
+        this.registrationMessage = `Error: ${error.message}`;
       });
   }
 }

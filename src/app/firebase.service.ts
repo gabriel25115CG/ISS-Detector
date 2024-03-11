@@ -14,7 +14,9 @@ import {
 
 } from 'firebase/auth'; 
 import { Observable, BehaviorSubject } from 'rxjs';
-import { sendPasswordResetEmail } from 'firebase/auth'; // Importez la méthode pour envoyer un e-mail de réinitialisation du mot de passe
+import { sendPasswordResetEmail } from 'firebase/auth'; 
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+
 
 
 @Injectable({
@@ -66,25 +68,56 @@ export class FirebaseService {
     this.currentUserSubject.next(pseudonyme);
   }
 
-  async registerUser(
-    email: string,
-    password: string,
-    pseudonyme: string
-  ): Promise<void> {
-    try {
-      const userCredential: UserCredential =
-        await createUserWithEmailAndPassword(this.auth, email, password);
-      const user = userCredential.user;
+// Méthode pour récupérer la description de l'utilisateur
+async getUserDescription(): Promise<string> {
+  const user = this.auth.currentUser;
+  if (user) {
+    const docRef = doc(this.db, 'userDescriptions', user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data()['description'];
 
-      // Enregistrez le pseudonyme avec l'utilisateur dans Firebase
-      await updateProfile(user, { displayName: pseudonyme });
-
-      console.log('User registered:', user);
-    } catch (error: any) {
-      console.error('Error registering user:', error);
-      throw error;
+    } else {
+      return '';
     }
+  } else {
+    return '';
   }
+}
+
+// Méthode pour sauvegarder la description de l'utilisateur
+async saveUserDescription(description: string): Promise<void> {
+  const user = this.auth.currentUser;
+  if (user) {
+    const docRef = doc(this.db, 'userDescriptions', user.uid);
+    await setDoc(docRef, { description });
+  } else {
+    throw new Error('Utilisateur non connecté.');
+  }
+}
+
+
+async registerUser(
+  email: string,
+  password: string,
+  pseudonyme: string,
+  description: string 
+): Promise<void> {
+  try {
+    const userCredential: UserCredential =
+      await createUserWithEmailAndPassword(this.auth, email, password);
+    const user = userCredential.user;
+
+    // Enregistrez le pseudonyme et la description avec l'utilisateur dans Firebase
+    await updateProfile(user, { displayName: pseudonyme });
+    await setDoc(doc(this.db, 'users', user.uid), { description }); // Sauvegarde de la description dans la base de données Firebase
+
+    console.log('User registered:', user);
+  } catch (error: any) {
+    console.error('Error registering user:', error);
+    throw error;
+  }
+}
 
   async loginUser(email: string, password: string): Promise<string> {
     try {
