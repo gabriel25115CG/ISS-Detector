@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Importez FormsModule ici
+import { FormsModule } from '@angular/forms'; // Import the FormsModule here
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,11 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarprofileComponent } from './navbarprofile/navbarprofile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ChatComponent } from './chat/chat.component';
+import { ChatService } from './chat.service';
 
 @NgModule({
   declarations: [
@@ -43,23 +47,23 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ProfileComponent,
     NavbarprofileComponent,
     UserProfileComponent,
-
-   
+    ChatComponent,
   ],
   imports: [
-  BrowserModule,
-    FormsModule, 
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [HttpClientModule,FirebaseService, NasaApiService, NgModule, FormData,],
-  
-  bootstrap: [
-    AppComponent,
+    BrowserModule,
     FormsModule,
-    BrowserModule
-    
-  
-  ]
+    HttpClientModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig), 
+  ],
+  providers: [
+    FirebaseService,
+    NasaApiService,
+    AngularFireDatabase,
+    ChatService,
+    // Remove HttpClientModule from providers
+    // Remove Firestore and getFirestore from providers
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

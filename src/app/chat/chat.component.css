@@ -1,0 +1,53 @@
+.message-time {
+  color: #6c5ce7; /* Choisissez une couleur sympa pour l'heure */
+  font-weight: bold; /* Met en gras l'heure */
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.message-info {
+  display: flex;
+  align-items: center;
+}
+
+.message-text {
+  margin-left: 5px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background: #0084ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
