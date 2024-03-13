@@ -1,4 +1,4 @@
-/* Styles CSS avec un peu de couleurs */
+/* Styles CSS avec un thème sombre */
 
 /* Conteneur principal du forum */
 .chat-container {
@@ -7,7 +7,8 @@
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f9f9f9;
+  background-color: #333; /* Fond sombre */
+  color: #fff; /* Texte clair */
   border-radius: 10px;
 }
 
@@ -15,7 +16,6 @@
 .chat-title {
   text-align: center;
   font-size: 24px;
-  color: #333;
   margin-bottom: 20px;
 }
 
@@ -29,18 +29,19 @@
 .message {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: #444; /* Couleur de fond plus foncée */
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .message-info {
   font-size: 14px;
-  color: #666;
+  color: #ccc; /* Couleur du texte plus clair */
 }
 
 .message-text {
   font-size: 16px;
+  color: #fff; /* Texte clair */
 }
 
 /* Conteneur du formulaire de saisie */
@@ -54,8 +55,10 @@
 .input-container input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #666; /* Bordure légèrement plus claire */
   border-radius: 5px;
+  background-color: #444; /* Fond sombre */
+  color: #fff; /* Texte clair */
 }
 
 /* Styles du bouton d'envoi */
@@ -64,12 +67,12 @@
   margin-left: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #007bff; /* Couleur de bouton par défaut */
+  color: #fff; /* Texte clair */
   cursor: pointer;
 }
 
 /* Changez la couleur du bouton lorsqu'il est survolé */
 .input-container button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Couleur de survol plus foncée */
 }
