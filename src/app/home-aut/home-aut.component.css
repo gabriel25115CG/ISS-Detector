@@ -1,29 +1,6 @@
-.parent-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.component-container {
-  display: flex;
-  flex: 1;
-}
-
-.map-container,
-.chat-container {
-  flex: 1;
-  border: 1px solid #ccc; /* Ajoutez une bordure pour visualiser les limites des composants */
-  overflow-y: auto; /* Ajoute un défilement si nécessaire */
-}
-
-.chat-container {
-  max-width: 300px; /* Largeur maximale du chat */
-}
-
-.chat-container .message {
-  display: none;
-}
-
-.chat-container .message:nth-last-child(-n+10) {
-  display: block; /* Affiche seulement les 10 derniers messages */
-}
+/* home-aut.component.css */
+:host {
+    background-color: #f0f0f0; /* Couleur de fond noir clair */
+    /* Autres styles pour le composant homeAUT */
+  }
+  
