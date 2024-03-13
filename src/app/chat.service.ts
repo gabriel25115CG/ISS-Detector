@@ -9,8 +9,8 @@ export class ChatService {
   constructor(private firestore: AngularFirestore) {}
 
   getMessages() {
-    // Récupérer les messages triés par ordre chronologique
-    return this.firestore.collection('message', ref => ref.orderBy('createdAt')).valueChanges();
+    // Récupérer tous les messages triés par ordre chronologique descendant
+    return this.firestore.collection('message', ref => ref.orderBy('createdAt', 'desc')).valueChanges();
   }
 
   sendMessage(text: string, userID: string) {
@@ -18,7 +18,7 @@ export class ChatService {
     this.firestore.collection('message').add({
       text,
       userID,
-      createdAt: new Date().toString()
+      createdAt: new Date().toISOString()
     });
   }
 }

@@ -1,53 +1,75 @@
-.message-time {
-  color: #6c5ce7; /* Choisissez une couleur sympa pour l'heure */
-  font-weight: bold; /* Met en gras l'heure */
-}
+/* Styles CSS avec un peu de couleurs */
 
+/* Conteneur principal du forum */
 .chat-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.messages {
-  flex: 1;
-  overflow-y: scroll;
+  width: 100%;
+  max-width: 800px; /* Vous pouvez ajuster la largeur maximale selon vos besoins */
+  margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
 
-.message {
+/* Titre du forum */
+.chat-title {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
   margin-bottom: 20px;
 }
 
+/* Conteneur des messages */
+.messages {
+  max-height: 300px; /* Limitez la hauteur pour faire défiler les messages */
+  overflow-y: auto; /* Ajoutez une barre de défilement si nécessaire */
+}
+
+/* Styles des messages */
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .message-info {
-  display: flex;
-  align-items: center;
+  font-size: 14px;
+  color: #666;
 }
 
 .message-text {
-  margin-left: 5px;
+  font-size: 16px;
 }
 
+/* Conteneur du formulaire de saisie */
 .input-container {
   display: flex;
   align-items: center;
-  padding: 20px;
+  margin-top: 20px;
 }
 
-input[type="text"] {
+/* Styles de l'entrée de texte */
+.input-container input {
   flex: 1;
-  border: none;
-  border-bottom: 1px solid #ccc;
   padding: 10px;
-  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-button {
-  margin-left: 20px;
-  padding: 10px;
-  font-size: 16px;
-  background: #0084ff;
-  color: white;
+/* Styles du bouton d'envoi */
+.input-container button {
+  padding: 10px 20px;
+  margin-left: 10px;
   border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
   cursor: pointer;
+}
+
+/* Changez la couleur du bouton lorsqu'il est survolé */
+.input-container button:hover {
+  background-color: #0056b3;
 }

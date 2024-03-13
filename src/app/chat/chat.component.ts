@@ -15,18 +15,18 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService, private firebaseService: FirebaseService) {}
 
   ngOnInit() {
-    // Récupérer le pseudonyme de l'utilisateur dès le chargement du composant
+    
     this.firebaseService.getCurrentUser().subscribe(pseudonyme => {
-      if (pseudonyme) { // Vérifiez si le pseudonyme existe
-        this.pseudonyme = pseudonyme; // Assignez la valeur du pseudonyme récupéré
+      if (pseudonyme) { 
+        this.pseudonyme = pseudonyme; 
       } else {
-        this.pseudonyme = 'utilisateur'; // Affectez une valeur par défaut si le pseudonyme n'est pas récupéré
+        this.pseudonyme = 'utilisateur'; 
       }
     });
 
-    // Récupérer les messages dès le chargement du composant
     this.chatService.getMessages().subscribe(messages => {
-      this.messages = messages;
+      // Inverser l'ordre des messages pour afficher les plus récents en bas
+      this.messages = messages.reverse();
     });
   }
 
