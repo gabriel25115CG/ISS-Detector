@@ -1,17 +1,65 @@
-.reset-button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    cursor: pointer;
-  }
+/* Styles pour le thème sombre */
 
-  .zoom-on-hover {
-    transition: transform 0.3s ease;
-  }
-  
-  .zoom-on-hover:hover {
-    transform: scale(2.1);
-  }
-  
+/* Fond et bordures de la carte avec des angles arrondis */
+.card.border-dark.shadow {
+  border-color: #495057; 
+  background-color: #343a40; 
+  color: #ffffff; 
+  border-radius: 15px; /* Arrondir les angles */
+}
+
+/* En-tête de la carte */
+.card-header.bg-dark.text-white {
+  background-color: #495057; 
+}
+
+/* Titre centré */
+.card-title.mb-0 {
+  text-align: center;
+}
+
+/* Corps de la carte */
+.card-body {
+  color: #ffffff; 
+}
+
+/* Étiquettes de formulaire */
+.col-form-label.font-weight-bold {
+  color: #ffffff; 
+}
+
+/* Texte des champs de formulaire en mode lecture seule */
+.form-control-plaintext {
+  color: #ffffff; 
+}
+
+/* Bouton principal */
+.btn.btn-primary {
+  background-color: #007bff; 
+  border-color: #007bff; 
+}
+
+/* Style au survol du bouton principal */
+.btn.btn-primary:hover {
+  background-color: #0056b3; 
+  border-color: #0056b3; 
+}
+
+/* Styles pour les boutons d'édition */
+.reset-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Effet de zoom au survol */
+.zoom-on-hover {
+  transition: transform 0.3s ease;
+}
+
+.zoom-on-hover:hover {
+  transform: scale(1.1); /* Légère réduction de l'effet de zoom */
+}
