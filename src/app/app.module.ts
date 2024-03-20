@@ -27,6 +27,8 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './chat.service';
+import { ForumComponent } from './forum/forum.component';
+import { ForumwelcomComponent } from './forumwelcom/forumwelcom.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { ChatService } from './chat.service';
     NavbarprofileComponent,
     UserProfileComponent,
     ChatComponent,
+    ForumComponent,
+    ForumwelcomComponent,
   ],
   imports: [
     BrowserModule,
