@@ -65,8 +65,7 @@ import { ForumwelcomComponent } from './forumwelcom/forumwelcom.component';
     NasaApiService,
     AngularFireDatabase,
     ChatService,
-    // Remove HttpClientModule from providers
-    // Remove Firestore and getFirestore from providers
+  
   ],
   bootstrap: [AppComponent]
 })

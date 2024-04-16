@@ -60,11 +60,12 @@ export class FirebaseService {
     });
   }
 
+
+      // Récupère le pseudonyme de l'utilisateur
+
   private setCurrentUser(user: User) {
-    // Récupère le pseudonyme de l'utilisateur
-    // Vous devrez adapter cette fonction pour récupérer le pseudonyme de l'utilisateur à partir de votre base de données ou d'une autre source
-    const pseudonyme = user.displayName || 'Utilisateur';
-    this.currentUserSubject.next(pseudonyme);
+  const pseudonyme = user.displayName || 'Utilisateur';
+  this.currentUserSubject.next(pseudonyme);
   }
 
 
